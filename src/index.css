@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+/* Hardware accelerated smooth floating transforms (Zero CPU Spike) */
+@keyframes orbitFloat1 {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  33% { transform: translate3d(6px, -10px, 0) scale(1.03); }
+  66% { transform: translate3d(-7px, 6px, 0) scale(0.97); }
+}
+
+@keyframes orbitFloat2 {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  33% { transform: translate3d(-8px, 8px, 0) scale(0.96); }
+  66% { transform: translate3d(7px, -7px, 0) scale(1.04); }
+}
+
+@keyframes orbitFloat3 {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(8px, 10px, 0) scale(1.03); }
+}
+
+@keyframes orbitFloat4 {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(-9px, -9px, 0) scale(0.97); }
+}
+
+.anim-orbit-1 { animation: orbitFloat1 7s ease-in-out infinite; will-change: transform; }
+.anim-orbit-2 { animation: orbitFloat2 8.5s ease-in-out infinite; will-change: transform; }
+.anim-orbit-3 { animation: orbitFloat3 6.5s ease-in-out infinite; will-change: transform; }
+.anim-orbit-4 { animation: orbitFloat4 9s ease-in-out infinite; will-change: transform; }
