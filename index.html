@@ -76,6 +76,42 @@
   </head>
   <body class="bg-[#060012] antialiased selection:bg-[#f9570c] selection:text-white">
     <div id="root"></div>
+    <style>
+  /* Hide Netlify injected floating badge */
+  a[href*="netlify.com"][style*="fixed"],
+  div[id*="netlify"],
+  iframe[src*="netlify"] {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+</style>
+
+<script>
+  // Remove Shadow DOM / injected Netlify badge dynamically
+  const hideNetlifyBadge = () => {
+    document.querySelectorAll('div, aside, a').forEach((el) => {
+      if (
+        el.shadowRoot &&
+        (el.innerHTML.includes('netlify') || el.shadowRoot.innerHTML.includes('Netlify'))
+      ) {
+        el.remove();
+      }
+      if (
+        el.textContent &&
+        el.textContent.trim() === 'Powered by Netlify' &&
+        getComputedStyle(el).position === 'fixed'
+      ) {
+        el.remove();
+      }
+    });
+  };
+
+  hideNetlifyBadge();
+  const observer = new MutationObserver(hideNetlifyBadge);
+  observer.observe(document.body, { childList: true, subtree: true });
+</script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
